@@ -48,21 +48,21 @@ public class ProcGen : MonoBehaviour
 
     void SmoothMap(){
 
-        for (int i = 0; i < smoothIterations; i++)
+        for (int i = 0; i < smoothIterations; i++)   //for loop to run a specific number of times.
         {
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++)        //keeps the function inside the map
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < height; y++)    //see above
                 {
                     int surroundingTiles = CountSurroundingTiles(x, y); //sets the value of surroundingTiles to the result of CountSurroundingTiles(x, y)
 
-                    if (surroundingTiles > 4) // checks for single tile gaps and fills them in, this creates a more cave-like look. This uses the cellular automata framework.
+                    if (surroundingTiles > 4)     // checks for single tile gaps and fills them in, this creates a more cave-like look. This uses the cellular automata framework.
                     {
-                        map[x, y] = 1;
-                    }
-                    else if (surroundingTiles < 4) // does the opposite of above, checks for single tiles and removes them to make navigaton easier.
+                        map[x, y] = 1;    //makes tile
+                    
+                    else if (surroundingTiles < 4)   // does the opposite of above, checks for single tiles and removes them to make navigaton easier.
                     {
-                        map[x, y] = 0;
+                        map[x, y] = 0;    //removes tile
                     }
                 }
             }
