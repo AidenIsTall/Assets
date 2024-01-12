@@ -68,19 +68,18 @@ public class ProcGen : MonoBehaviour
             }
         }
     }
-    int CountSurroundingTiles(int gridX, int gridY){ //it counts the number of surrounding tiles. Duh.
+    int CountSurroundingTiles(int gridX, int gridY){      //it counts the number of surrounding tiles. Duh.
+    
         int count = 0;      //it keeps count.
-        for (int x = gridX - 1; x <= gridX + 1; x++)  //for loop 
-        {
-            for (int y = gridY - 1; y <= gridY + 1; y++)
-            {
-                if (x >= 0 && x < width && y >= 0 && y < height)
-                {
-                    count += map[x, y];
+        
+        for (int x = gridX - 1; x <= gridX + 1; x++){     //for loops to keep function to necessary area
+            for (int y = gridY - 1; y <= gridY + 1; y++){     //see above
+            
+                if (x >= 0 && x < width && y >= 0 && y < height){ //checks if tiles are in map
+                    count += map[x, y];     //counts the tiles
                 }
-                else
-                {
-                    count++;
+                else{
+                    count++; //increases count by one
                 }
             }
         }
