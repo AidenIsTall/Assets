@@ -69,8 +69,8 @@ public class ProcGen : MonoBehaviour
         }
     }
     int CountSurroundingTiles(int gridX, int gridY){ //it counts the number of surrounding tiles. Duh.
-        int count = 0;//it keeps count.
-        for (int x = gridX - 1; x <= gridX + 1; x++)
+        int count = 0;      //it keeps count.
+        for (int x = gridX - 1; x <= gridX + 1; x++)  //for loop 
         {
             for (int y = gridY - 1; y <= gridY + 1; y++)
             {
@@ -87,7 +87,7 @@ public class ProcGen : MonoBehaviour
         return count;
     }
 
-    void DrawMap()
+    void DrawMap() //draws the map using Unity tilemap library
     {
         
         for (int x = 0; x < width; x++)
