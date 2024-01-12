@@ -25,24 +25,24 @@ public class ProcGen : MonoBehaviour
 
     void GenerateMap(){
 
-        map = new int[width, height];
+        map = new int[width, height];     //creates a 2D array called map
 
         for(int x = 0; x < width; x++){
             for(int y = 0; y < height; y++){
 
-                map[x,y] = (Random.Range(0,100)< initialFillPercent) ? 1 : 0;
+                map[x,y] = (Random.Range(0,100)< initialFillPercent) ? 1 : 0; // randomly fills the map based on the initialFillPercent variable.
             }
         }
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)    // for loop
         {
-            map[x, 0] = 1;
-            map[x, height - 1] = 1;
+            map[x, 0] = 1;                 //sets vertical limits to close off the map
+            map[x, height - 1] = 1;        // see above
         }
 
         for (int y = 0; y < height; y++)
         {
-            map[0, y] = 1;
-            map[width - 1, y] = 1;
+            map[0, y] = 1;                 //sets horizontal limits to close off the map
+            map[width - 1, y] = 1; //see above
         }
     }
 
@@ -54,13 +54,13 @@ public class ProcGen : MonoBehaviour
             {
                 for (int y = 0; y < height; y++)
                 {
-                    int surroundingTiles = CountSurroundingTiles(x, y);
+                    int surroundingTiles = CountSurroundingTiles(x, y); //sets the value of surroundingTiles to the result of CountSurroundingTiles(x, y)
 
-                    if (surroundingTiles > 4)
+                    if (surroundingTiles > 4) // checks for single tile gaps and fills them in, this creates a more cave-like look. This uses the cellular automata framework.
                     {
                         map[x, y] = 1;
                     }
-                    else if (surroundingTiles < 4)
+                    else if (surroundingTiles < 4) // does the opposite of above, checks for single tiles and removes them to make navigaton easier.
                     {
                         map[x, y] = 0;
                     }
@@ -68,8 +68,8 @@ public class ProcGen : MonoBehaviour
             }
         }
     }
-    int CountSurroundingTiles(int gridX, int gridY){
-        int count = 0;
+    int CountSurroundingTiles(int gridX, int gridY){ //it counts the number of surrounding tiles. Duh.
+        int count = 0;//it keeps count.
         for (int x = gridX - 1; x <= gridX + 1; x++)
         {
             for (int y = gridY - 1; y <= gridY + 1; y++)
